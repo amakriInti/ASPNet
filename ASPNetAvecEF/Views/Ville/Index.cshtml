@@ -1,0 +1,23 @@
+﻿@model ASPNetAvecEF.Models.Villes
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Liste des villes</title>
+</head>
+<body>
+    <ul>
+        @{
+            foreach (var v in Model)
+            {
+                <li>@v.Nom </li>
+            }
+    }
+</ul>
+</body>
+</html>

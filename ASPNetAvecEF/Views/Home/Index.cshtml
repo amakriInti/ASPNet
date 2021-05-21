@@ -1,0 +1,11 @@
+﻿@model ASPNetAvecEF.Models.Personnes
+<ul>
+@{
+    ViewBag.Title = "Home Page";
+
+    foreach(var p in Model)
+    {
+        <li>@p.Nom @p.Prenom </li>
+    }
+}
+</ul>
