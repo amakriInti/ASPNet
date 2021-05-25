@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASPNetAvecEF
+namespace ASPNetAvecEFAuto
 {
     using System;
     using System.Data.Entity;
@@ -25,10 +25,6 @@ namespace ASPNetAvecEF
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Person> People { get; set; }
-        public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<ProductCategory> ProductCategories { get; set; }
-        public virtual DbSet<ProductSubcategory> ProductSubcategories { get; set; }
     }
 }

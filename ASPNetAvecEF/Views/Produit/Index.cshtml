@@ -1,0 +1,24 @@
+﻿@model ASPNetAvecEF.Models.Produits
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <ul>
+        @{
+            foreach (var v in Model)
+            {
+                <li>@v.Nom </li>
+            }
+        }
+    </ul>
+</body>
+</html>

@@ -5,8 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d86c561c31404c609becf229889e62df" Name="Diagram1">
-        <EntityTypeShape EntityType="AdventureWorks2016Model.Person" Width="1.5" PointX="3.125" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AdventureWorks2016Model.Address" Width="1.5" PointX="5.75" PointY="1.125" />
+        <EntityTypeShape EntityType="AdventureWorks2016Model.Person" Width="1.5" PointX="0.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorks2016Model.Address" Width="1.5" PointX="2.375" PointY="0.75" />
+        <EntityTypeShape EntityType="AdventureWorks2016Model.Product" Width="1.5" PointX="5.875" PointY="0.625" />
+        <EntityTypeShape EntityType="AdventureWorks2016Model.ProductCategory" Width="2.5" PointX="10.375" PointY="1.625" />
+        <EntityTypeShape EntityType="AdventureWorks2016Model.ProductSubcategory" Width="1.5" PointX="8" PointY="1.5" />
+        <AssociationConnector Association="AdventureWorks2016Model.FK_Product_ProductSubcategory_ProductSubcategoryID" />
+        <AssociationConnector Association="AdventureWorks2016Model.FK_ProductSubcategory_ProductCategory_ProductCategoryID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
