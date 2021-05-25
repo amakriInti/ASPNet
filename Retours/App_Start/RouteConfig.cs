@@ -14,9 +14,14 @@ namespace Retours
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "route1",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index10", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index7", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index9", id = UrlParameter.Optional }
             );
         }
     }

@@ -48,9 +48,25 @@ namespace Retours.Controllers
         // JavascriptResult
         public ActionResult Index7()
         {
-            var result = new  JsonResult();
+            var result = new JsonResult();
             result.Data = @"{""a"":1;""b"":""test""}";
             result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+            return result;
+        }
+        // RedirectResult
+        public ActionResult Index8()
+        {
+            var result = new RedirectResult("http://google.fr");
+            return result;
+        }
+        // RedirectToRouteResult
+        public string Index10()
+        {
+            return "Reroutage";
+        }
+        public ActionResult Index9()
+        {
+            var result = new RedirectToRouteResult("route1", null);
             return result;
         }
 
