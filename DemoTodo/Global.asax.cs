@@ -1,3 +1,4 @@
+using DemoTodo.Controllers;
 using DemoTodo.Models;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace DemoTodo
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             ModelBinders.Binders.Add(typeof(Todo), new TodoModelBinder());
+            ControllerBuilder.Current.SetControllerFactory(new MonControllerFactory());
         }
     }
 }

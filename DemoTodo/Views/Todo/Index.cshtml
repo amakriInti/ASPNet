@@ -2,13 +2,20 @@
 
 @{
     ViewBag.Title = "Index";
+    int a = 123;
+    DemoTodo.Models.Todo todo = Model.FirstOrDefault();
 }
 
 <h2>Index</h2>
-
+<h3>@ViewBag.Utilisateur</h3>
+@* Un commentaire *@
+<h1>@a</h1>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@*<div>
+    @Html.Partial("_Commentaire", Model.FirstOrDefault())
+</div>*@
 <table class="table">
     <tr>
         <th>

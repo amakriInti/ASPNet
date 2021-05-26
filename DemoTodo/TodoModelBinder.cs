@@ -12,10 +12,7 @@ namespace DemoTodo
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
             var todo = new Todo();
-            if (controllerContext.HttpContext.Request.Path.Contains("Delete"))
-            {
-            }
-            else if (controllerContext.HttpContext.Request.Path.Contains("Create"))
+            if (controllerContext.HttpContext.Request.Path.Contains("Create"))
             {
                 todo.Libelle = controllerContext.HttpContext.Request.Form["Libelle"].ToString();
                 todo.Etat = bool.Parse(controllerContext.HttpContext.Request.Form.GetValues("Etat")[0]);

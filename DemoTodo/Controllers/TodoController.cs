@@ -1,4 +1,5 @@
-﻿using DemoTodo.Models;
+﻿using DemoTodo.Data;
+using DemoTodo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,15 +10,18 @@ namespace DemoTodo.Controllers
 {
     public class TodoController : Controller
     {
-        private List<Todo> Todos = new List<Todo> {
-            new Todo{ Id=1, Libelle="Acheter du pain", Etat=true, DateCreation=DateTime.Now, DateModif=DateTime.Now },
-            new Todo{ Id=2, Libelle="Sortir le chien", Etat=false, DateCreation=DateTime.Now, DateModif=DateTime.Now},
-            new Todo{ Id=3, Libelle="Récupérer les enfants", Etat=true, DateCreation=DateTime.Now, DateModif=DateTime.Now },
-        };
+        private TodoContext Context = new TodoContext();
+        //private List<Todo> Todos = new List<Todo> {
+        //    new Todo{ Id=1, Libelle="Acheter du pain", Etat=true, DateCreation=DateTime.Now, DateModif=DateTime.Now },
+        //    new Todo{ Id=2, Libelle="Sortir le chien", Etat=false, DateCreation=DateTime.Now, DateModif=DateTime.Now},
+        //    new Todo{ Id=3, Libelle="Récupérer les enfants", Etat=true, DateCreation=DateTime.Now, DateModif=DateTime.Now },
+        //};
         // GET: Todo
         public ActionResult Index()
         {
-            return View(Todos);
+            ViewBag.Utilisateur = "Ali";
+            var todos = Context.Todos.ToList();
+            return View(todos);
         }
         public ActionResult Create()
         {
@@ -28,13 +32,14 @@ namespace DemoTodo.Controllers
         public ActionResult Create(Todo todo)
         {
             todo.DateCreation = DateTime.Now;
-            Todos.Add(todo);
+            Context.Todos.Add(todo);
+            Context.SaveChanges();
             return RedirectToAction("Index");
         }
         public ActionResult Edit(int? id)
         {
             if (id == null) return RedirectToAction("Index");
-            var todo = Todos.FirstOrDefault(t => t.Id == id);
+            var todo = Context.Todos.FirstOrDefault(t => t.Id == id);
             if (todo == null) return RedirectToAction("Index");
             return View(todo);
         }
@@ -65,11 +70,12 @@ namespace DemoTodo.Controllers
        [HttpPost]
         public ActionResult Edit(Todo todoModifie)
         {
-            var todo = Todos.FirstOrDefault(t => t.Id == todoModifie.Id);
+            var todo = Context.Todos.FirstOrDefault(t => t.Id == todoModifie.Id);
             if (todo == null) return RedirectToAction("Index");
             todo.Libelle = todoModifie.Libelle;
             todo.Etat = todoModifie.Etat;
             todo.DateModif = DateTime.Now;
+            Context.SaveChanges();
             return View(todo);
         }
 
@@ -77,18 +83,22 @@ namespace DemoTodo.Controllers
         public ActionResult Delete(int? id)
         {
             if (id == null) return RedirectToAction("Index");
-            var todoASupprimer = Todos.FirstOrDefault(t => t.Id == id);
+            var todoASupprimer = Context.Todos.FirstOrDefault(t => t.Id == id);
             if (todoASupprimer == null) return RedirectToAction("Index");
             return View(todoASupprimer);
         }
         [HttpPost]
-        public ActionResult Delete(Todo todoASupprimer)
+        public ActionResult Delete(int? id, int? a)
         {
-            var todo = Todos.FirstOrDefault(t => t.Id == todoASupprimer.Id);
+            var todo = Context.Todos.FirstOrDefault(t => t.Id == id);
             if (todo == null) return RedirectToAction("Index");
-            Todos.Remove(todo);
+            Context.Todos.Remove(todo);
+            Context.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        public PartialViewResult Commentaire()
+        {
+            return PartialView();
+        }
     }
 }
