@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace DemoTodo2
+namespace DemoTodo
 {
     public class FilterConfig
     {

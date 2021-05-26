@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace DemoTodo2.Controllers
+namespace DemoTodo.Controllers
 {
     public class HomeController : Controller
     {

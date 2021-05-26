@@ -7,8 +7,8 @@ namespace DemoTodo.Models
 {
     public class Todo
     {
-        public int Id;
-        public string Libelle;
-        public bool Etat;
+        public int Id { get; set; }
+        public string Libelle { get; set; }
+        public bool Etat { get; set; }
     }
 }
