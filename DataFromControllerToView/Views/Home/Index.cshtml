@@ -1,0 +1,16 @@
+﻿@model DataFromControllerToView.Controllers.A
+
+<h2>Index</h2>
+<p>@Model.Content</p>
+
+<p>@ViewBag.Param1</p>
+<p>@ViewBag.Param2</p>
+
+<h2>@ViewBag.Maintenant</h2>
+<div id="div1"></div>
+<script>
+    document.getElementById("div1").innerHTML = Date.now();
+</script>
+
+Autre heure
+<h2>@DateTime.Now</h2>

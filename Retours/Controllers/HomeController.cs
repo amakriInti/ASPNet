@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace Retours.Controllers
 {
@@ -66,8 +67,11 @@ namespace Retours.Controllers
         }
         public ActionResult Index9()
         {
-            var result = new RedirectToRouteResult("route1", null);
-            return result;
+            return new RedirectToRouteResult(new RouteValueDictionary(new { action = "Index", controller = "Autre" }));
+        }
+        public ActionResult Index9Bis()
+        {
+            return new RedirectToRouteResult("route1", new RouteValueDictionary(new { action = "Index"}));
         }
 
     }

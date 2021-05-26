@@ -1,0 +1,14 @@
+﻿@model DemoTodo.Models.Todo
+    @{ 
+        string c = Model.Etat ? "checked=checked" : "checked=false";
+    }
+<h2>Edit @Model.Id</h2>
+<a href="/todo/index">Retour</a>
+<br />
+<form method="post" action="/todo/edit">
+    <input type="hidden" name="Id" value="@Model.Id"/>
+    Libellé : <input type="text" name="Libelle" value="@Model.Libelle" /><br />
+    Etat : <input type="checkbox"  @c name="Etat"/> <br/>
+    <input type="submit" value="Valider"/>
+</form>
+
