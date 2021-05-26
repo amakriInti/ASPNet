@@ -10,9 +10,9 @@ namespace DemoTodo.Controllers
     public class TodoController : Controller
     {
         private List<Todo> Todos = new List<Todo> {
-            new Todo{ Id=1, Libelle="Acheter du pain", Etat=true },
-            new Todo{ Id=2, Libelle="Sortir le chien", Etat=false},
-            new Todo{ Id=3, Libelle="Récupérer les enfants", Etat=true },
+            new Todo{ Id=1, Libelle="Acheter du pain", Etat=true, DateCreation=DateTime.Now, DateModif=DateTime.Now },
+            new Todo{ Id=2, Libelle="Sortir le chien", Etat=false, DateCreation=DateTime.Now, DateModif=DateTime.Now},
+            new Todo{ Id=3, Libelle="Récupérer les enfants", Etat=true, DateCreation=DateTime.Now, DateModif=DateTime.Now },
         };
         // GET: Todo
         public ActionResult Index()
@@ -27,6 +27,7 @@ namespace DemoTodo.Controllers
         [HttpPost]
         public ActionResult Create(Todo todo)
         {
+            todo.DateCreation = DateTime.Now;
             Todos.Add(todo);
             return RedirectToAction("Index");
         }
@@ -49,14 +50,26 @@ namespace DemoTodo.Controllers
         //}
 
         // Sans ModelBinder par défaut
-        [HttpPost]
-        public ActionResult Edit()
-        {
-            var todo = new Todo();
-            todo.Id = int.Parse(Request.Form["Id"].ToString());
-            todo.Libelle = Request.Form["Libelle"].ToString();
-            todo.Etat = bool.Parse(Request.Form.GetValues("Etat")[0]);
+        //[HttpPost]
+        //public ActionResult Edit()
+        //{
+        //    var todo = new Todo();
+        //    todo.Id = int.Parse(Request.Form["Id"].ToString());
+        //    todo.Libelle = Request.Form["Libelle"].ToString();
+        //    todo.Etat = bool.Parse(Request.Form.GetValues("Etat")[0]);
 
+        //    return View(todo);
+        //}
+
+        // Avec ModelBinder personnalisé
+       [HttpPost]
+        public ActionResult Edit(Todo todoModifie)
+        {
+            var todo = Todos.FirstOrDefault(t => t.Id == todoModifie.Id);
+            if (todo == null) return RedirectToAction("Index");
+            todo.Libelle = todoModifie.Libelle;
+            todo.Etat = todoModifie.Etat;
+            todo.DateModif = DateTime.Now;
             return View(todo);
         }
 
