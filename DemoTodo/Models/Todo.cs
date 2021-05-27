@@ -12,6 +12,35 @@ namespace DemoTodo.Models
     {
         private TodoContext Context = new TodoContext();
 
+        public bool ClearAll()
+        {
+            try
+            {
+                Context.Todos.RemoveRange(Context.Todos);
+                Context.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool Insert(string libelle, bool etat)
+        {
+            try
+            {
+                Context.Todos.Add(new Todo { Libelle = libelle, Etat = etat });
+                Context.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
+
         public TodoEtendu()
         {
 
