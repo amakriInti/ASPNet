@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 
@@ -11,6 +12,20 @@ namespace DemoTodo.Models
     public class TodoEtendu
     {
         private TodoContext Context = new TodoContext();
+        public List<Todo> Todos
+        {
+            get
+            {
+                return Context.Todos.ToList();
+            }
+        }
+        public int Compteur
+        {
+            get
+            {
+                return Context.Todos.Count(t => !t.Etat);
+            }
+        }
 
         public bool ClearAll()
         {
@@ -26,34 +41,33 @@ namespace DemoTodo.Models
             }
         }
 
-        public bool Insert(string libelle, bool etat)
+        public string Insert(string libelle, bool etat)
         {
             try
             {
                 Context.Todos.Add(new Todo { Libelle = libelle, Etat = etat });
                 Context.SaveChanges();
-                return true;
+                return null;
+            }
+            catch(DbEntityValidationException ex)
+            {
+                string Message = "";
+                //var x = ex.EntityValidationErrors.Select(eve => eve.ValidationErrors.Select(ve=>ve.ErrorMessage));
+                foreach(var eve in ex.EntityValidationErrors)
+                {
+                    foreach(var ve in eve.ValidationErrors)
+                    {
+                        Message+=$"{ve.PropertyName}:{ve.ErrorMessage}";
+                    }
+                }
+                return Message;
             }
             catch (Exception ex)
             {
-                return false;
-            }
-
-        }
-
-        public TodoEtendu()
-        {
-
-            Todos = Context.Todos.ToList();
-        }
-        public int Compteur
-        {
-            get
-            {
-                return Context.Todos.Count(t => !t.Etat);
+                return ex.Message;
             }
         }
-        public List<Todo> Todos { get; set; }
+
     }
     public class Todo
     {

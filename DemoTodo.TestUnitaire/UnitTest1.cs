@@ -15,11 +15,14 @@ namespace DemoTodo.TestUnitaire
             Assert.IsTrue(todoEtendu.ClearAll(), "Impossible de vider la table Todo");
 
             // 2. Insérer 5 todos
-            Assert.IsTrue(todoEtendu.Insert("A", true), message);
-            Assert.IsTrue(todoEtendu.Insert("B1234", true ), "Erreur avec B");
-            Assert.IsTrue(todoEtendu.Insert("C1234", false), "Erreur avec C");
-            Assert.IsTrue(todoEtendu.Insert("D1234", false), "Erreur avec D");
-            Assert.IsTrue(todoEtendu.Insert("E1234", true ), "Erreur avec E");
+            var message = todoEtendu.Insert("A", true);
+            Assert.IsTrue( message==null, message);
+
+
+            //Assert.IsTrue(todoEtendu.Insert("B1234", true ), "Erreur avec B");
+            //Assert.IsTrue(todoEtendu.Insert("C1234", false), "Erreur avec C");
+            //Assert.IsTrue(todoEtendu.Insert("D1234", false), "Erreur avec D");
+            //Assert.IsTrue(todoEtendu.Insert("E1234", true ), "Erreur avec E");
 
             // 3. Vérification de 2 restes à faire
             Assert.IsTrue(todoEtendu.Compteur == 2);

@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUnitaire.Test", "TestUn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoTodo.TestUnitaire", "DemoTodo.TestUnitaire\DemoTodo.TestUnitaire.csproj", "{6C2F7507-CA50-4673-8B37-0A31F2FAAB38}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InjectionDependence", "InjectionDependence\InjectionDependence.csproj", "{5F3B9792-5A1C-4033-B428-92C19106BC1A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{6C2F7507-CA50-4673-8B37-0A31F2FAAB38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C2F7507-CA50-4673-8B37-0A31F2FAAB38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C2F7507-CA50-4673-8B37-0A31F2FAAB38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F3B9792-5A1C-4033-B428-92C19106BC1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F3B9792-5A1C-4033-B428-92C19106BC1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F3B9792-5A1C-4033-B428-92C19106BC1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F3B9792-5A1C-4033-B428-92C19106BC1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +91,7 @@ Global
 		{5970B528-393B-496A-9224-2F74F0723B4F} = {8B7796E9-1FEB-43CB-8BD1-8AF76925AC49}
 		{75EDA404-0BB7-4125-B2EC-394F2AEE02C8} = {8B7796E9-1FEB-43CB-8BD1-8AF76925AC49}
 		{87027BC3-A7A6-4554-96CC-7B94DD25ACBB} = {8B7796E9-1FEB-43CB-8BD1-8AF76925AC49}
+		{5F3B9792-5A1C-4033-B428-92C19106BC1A} = {8B7796E9-1FEB-43CB-8BD1-8AF76925AC49}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3438E696-8FC2-4F34-B597-DD3B870AB7B5}
