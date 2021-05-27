@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ninject;
+using System.Web.Mvc;
 
 namespace InjectionDependence
 {
@@ -73,5 +75,17 @@ namespace InjectionDependence
         void Add(string nom);
         List<string> Get();
 
+    }
+    class DemoNinject : IDependencyResolver
+    {
+        public object GetService(Type serviceType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<object> GetServices(Type serviceType)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
