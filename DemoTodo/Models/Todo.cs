@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DemoTodo.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -7,6 +8,19 @@ using System.Web;
 
 namespace DemoTodo.Models
 {
+    public class TodoEtendu
+    {
+        private TodoContext Context = new TodoContext();
+
+        public TodoEtendu()
+        {
+
+            Todos = Context.Todos.ToList();
+            Compteur = Todos.Count(t => !t.Etat);
+        }
+        public int Compteur { get; set; }
+        public List<Todo> Todos { get; set; }
+    }
     public class Todo
     {
         public int Id { get; set; }

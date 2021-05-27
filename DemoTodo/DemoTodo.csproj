@@ -182,6 +182,7 @@
     <Content Include="Views\Todo\Delete.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Todo\_Commentaire.cshtml" />
+    <Content Include="Views\Todo\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

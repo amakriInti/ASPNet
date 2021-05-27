@@ -17,11 +17,23 @@ namespace DemoTodo.Controllers
         //    new Todo{ Id=3, Libelle="Récupérer les enfants", Etat=true, DateCreation=DateTime.Now, DateModif=DateTime.Now },
         //};
         // GET: Todo
+        public ActionResult Details(int? id)
+        {
+            if (id == null) return RedirectToAction("Index");
+            var todo = Context.Todos.FirstOrDefault(t => t.Id == id);
+            if (todo == null) return RedirectToAction("Index");
+            return View(todo);
+        }
         public ActionResult Index()
         {
-            ViewBag.Utilisateur = "Ali";
-            var todos = Context.Todos.ToList();
-            return View(todos);
+            //var todos = Context.Todos.ToList();
+            ////ViewBag.Compteur = todos.Count(t => !t.Etat);
+            //var compteur = todos.Count(t => !t.Etat);
+
+            //return View(new TodoEtendu { Todos = todos, Compteur = compteur });
+
+            var todoEtendu = new TodoEtendu();
+            return View(todoEtendu);
         }
         public ActionResult Create()
         {

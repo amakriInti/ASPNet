@@ -1,45 +1,51 @@
-﻿@model IEnumerable<DemoTodo.Models.Todo>
+﻿@model DemoTodo.Models.TodoEtendu
 
 @{
     ViewBag.Title = "Index";
-    int a = 123;
-    DemoTodo.Models.Todo todo = Model.FirstOrDefault();
+    //int compteur = 0;
 }
 
 <h2>Index</h2>
-<h3>@ViewBag.Utilisateur</h3>
+@*<h3>@ViewBag.Utilisateur</h3>*@
 @* Un commentaire *@
-<h1>@a</h1>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 @*<div>
-    @Html.Partial("_Commentaire", Model.FirstOrDefault())
-</div>*@
+        @Html.Partial("_Commentaire", Model.FirstOrDefault())
+    </div>*@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Libelle)
+            @Html.DisplayNameFor(model => model.Todos[0].Libelle)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Etat)
+            @Html.DisplayNameFor(model => model.Todos[0].Etat)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Libelle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Etat)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
+    @{
+        foreach (var item in Model.Todos)
+        {
+            //if (!item.Etat) { compteur++; }
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Libelle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Etat)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Détails", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    }
 </table>
+<hr />
+@*Il vous reste @compteur de chose(s) à faire*@
+@*Il vous reste @ViewBag.Compteur de chose(s) à faire*@
+Il vous reste @Model.Compteur de chose(s) à faire
