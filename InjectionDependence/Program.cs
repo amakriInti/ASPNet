@@ -12,8 +12,10 @@ namespace InjectionDependence
     {
         static void Main(string[] args)
         {
-            var repo = new Repository();
-            Personnes ps = new Personnes(repo);
+            DependencyResolver.SetResolver(new DemoNinject());
+
+            //var repo = new Repository();
+            Personnes ps = new Personnes();
             foreach(var item in ps.Get())
             {
                 Console.WriteLine(item);
@@ -23,6 +25,10 @@ namespace InjectionDependence
     }
     class Personnes
     {
+        public Personnes()
+        {
+
+        }
         private IRepository Repo = null;
         public Personnes(IRepository repo)
         {
@@ -78,14 +84,26 @@ namespace InjectionDependence
     }
     class DemoNinject : IDependencyResolver
     {
+        private IKernel kernel;
+        public DemoNinject()
+        {
+            kernel = new StandardKernel();
+            AddBindings();
+        }
+
+        private void AddBindings()
+        {
+            kernel.Bind<IRepository>().To<Repository>();
+        }
+
         public object GetService(Type serviceType)
         {
-            throw new NotImplementedException();
+            return kernel.TryGet(serviceType);
         }
 
         public IEnumerable<object> GetServices(Type serviceType)
         {
-            throw new NotImplementedException();
+            return kernel.GetAll(serviceType);
         }
     }
 }

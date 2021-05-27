@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoTodo.TestUnitaire", "De
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InjectionDependence", "InjectionDependence\InjectionDependence.csproj", "{5F3B9792-5A1C-4033-B428-92C19106BC1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoInjectionDependance", "DemoInjectionDependance\DemoInjectionDependance.csproj", "{E2A73028-F8BB-4CB5-A711-2AD6ACC343DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{5F3B9792-5A1C-4033-B428-92C19106BC1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F3B9792-5A1C-4033-B428-92C19106BC1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F3B9792-5A1C-4033-B428-92C19106BC1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2A73028-F8BB-4CB5-A711-2AD6ACC343DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2A73028-F8BB-4CB5-A711-2AD6ACC343DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2A73028-F8BB-4CB5-A711-2AD6ACC343DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2A73028-F8BB-4CB5-A711-2AD6ACC343DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

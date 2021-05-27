@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DemoInjectionDependance.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Repository" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DemoInjectionDependance.Models.FakeRepository</Value>
+    </Setting>
+    <Setting Name="Logo" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DemoInjectionDependance.Models.LogoFree</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

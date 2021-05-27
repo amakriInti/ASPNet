@@ -1,0 +1,13 @@
+﻿@model List<string>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<img src="~/images/@ViewBag.Logo"/>
+<ul>
+    @foreach (var s in Model)
+    {
+        <li>@s</li>
+    }
+</ul>
