@@ -34,7 +34,7 @@ namespace DemoTodo.Models
                 Context.SaveChanges();
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return false;
             }
@@ -45,9 +45,14 @@ namespace DemoTodo.Models
         {
 
             Todos = Context.Todos.ToList();
-            Compteur = Todos.Count(t => !t.Etat);
         }
-        public int Compteur { get; set; }
+        public int Compteur
+        {
+            get
+            {
+                return Context.Todos.Count(t => !t.Etat);
+            }
+        }
         public List<Todo> Todos { get; set; }
     }
     public class Todo
@@ -56,7 +61,7 @@ namespace DemoTodo.Models
 
         [Required]
         //[TailleMinMax(5, Max = 50, ErrorMessage = "Taille de texte incorrect")]
-        [StringLength(50, MinimumLength =5, ErrorMessage ="Entre 5 et 50 caractères")]
+        [StringLength(50, MinimumLength = 5, ErrorMessage = "Entre 5 et 50 caractères")]
         [DisplayName("Libellé")]
         public string Libelle { get; set; }
 
