@@ -12,10 +12,11 @@ namespace InjectionDependence
     {
         static void Main(string[] args)
         {
-            DependencyResolver.SetResolver(new DemoNinject());
+            // Ligne à supprimer si NInject (ou Unity)
+            var repo = new Repository(); // ou
+            //var repo = new FakeRepository();
 
-            //var repo = new Repository();
-            Personnes ps = new Personnes();
+            Personnes ps = new Personnes(repo);
             foreach(var item in ps.Get())
             {
                 Console.WriteLine(item);

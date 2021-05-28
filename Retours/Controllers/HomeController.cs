@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
+// Les retours du controller
 namespace Retours.Controllers
 {
     public class HomeController : Controller
@@ -13,7 +14,8 @@ namespace Retours.Controllers
         // String
         public string Index1()
         {
-            return "Essai avec un string";
+            //return "Essai avec un string";
+            return "<html><body><h1>Une page Html</h1></body></html>";
         }
         public Personne Index2()
         {
@@ -46,7 +48,7 @@ namespace Retours.Controllers
             var script = "<script>function a (){alert('Hello');}</script>";
             return new JavaScriptResult() { Script = script };
         }
-        // JavascriptResult
+        // JSonResult
         public ActionResult Index7()
         {
             var result = new JsonResult();
