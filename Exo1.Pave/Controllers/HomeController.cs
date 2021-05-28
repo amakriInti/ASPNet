@@ -9,7 +9,11 @@ namespace Exo1.Pave.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(string id)
+        {
+
+        }
+        public ActionResult Index2()
         {
             return View();
         }

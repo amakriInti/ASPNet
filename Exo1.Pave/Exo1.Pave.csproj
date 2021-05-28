@@ -89,19 +89,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
+    <Content Include="Dessins\1.png" />
     <Content Include="Global.asax" />
-    <Content Include="images\b0.png" />
-    <Content Include="images\b1.png" />
-    <Content Include="images\b2.png" />
-    <Content Include="images\b3.png" />
-    <Content Include="images\b4.png" />
-    <Content Include="images\b5.png" />
-    <Content Include="images\b6.png" />
-    <Content Include="images\b7.png" />
-    <Content Include="images\b8.png" />
-    <Content Include="images\b9.png" />
-    <Content Include="images\bD.png" />
-    <Content Include="images\bE.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +107,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Index2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
