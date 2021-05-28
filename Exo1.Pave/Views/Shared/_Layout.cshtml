@@ -15,7 +15,21 @@
             color: white;
         }
     </style>
-
+    <script>
+        var code = "";
+        function concat(t) {
+            code += t;
+            if (code.length == 4) {
+                var xhr = new XMLHttpRequest();
+                form = new FormData();
+                form.append('code', code);
+                xhr.open("POST", "/home/index/", false);
+                //xhr.setRequestHeader('Content-Type', 'application/text');
+                xhr.send(form);
+                //window.location = "https://localhost:44311/Home/index/" + code;
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">

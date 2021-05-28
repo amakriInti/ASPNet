@@ -9,11 +9,19 @@ namespace Exo1.Pave.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        public ActionResult Index(string id)
+        public ActionResult Index()
         {
-
+            return View();
         }
-        public ActionResult Index2()
+        [HttpPost]
+        public ActionResult Index(string code)
+        {
+            if (code == "1234") return RedirectToAction("Accueil");
+            if (code != null) ViewBag.Erreur = "Code incorrect";
+            return View();
+        }
+
+        public ActionResult accueil()
         {
             return View();
         }
