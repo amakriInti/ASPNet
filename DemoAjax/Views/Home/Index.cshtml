@@ -1,0 +1,58 @@
+﻿<html>
+<head>
+    <script src=" http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js "></script>
+    <script>
+        $(document).ready(function () {
+            $('#boutonAjax1').click(function () {
+                var url = "http://localhost:63264/home/ajaxContenu1/";
+                $.get(url, function (data) {
+                    document.getElementById('divMessage1').innerHTML = data;
+                })
+            });
+            $('#boutonAjax2').click(function () {
+                var url = "http://localhost:63264/home/ajaxContenu2";
+                $.get(url, function (data) {
+                    document.getElementById('divMessage2').innerHTML = data;
+                })
+            });
+        });
+    </script>
+</head>
+<body>
+    @{
+        Layout = null;
+        ViewBag.Title = "Index";
+    }
+
+    <h2>Index : Ajax avec XmlHttp</h2>
+
+    <div id="divMessage1">
+        Texte avant appel Ajax (string attendu)
+    </div>
+    <a href="#" id="boutonAjax1">Mettre à jour</a>
+    <hr />
+
+    <div id="divMessage2">
+        Texte avant appel Ajax (Html attendu)
+    </div>
+    <a href="#" id="boutonAjax2">Mettre à jour</a>
+    <hr />
+
+    <div id="divMessage3">
+       
+    </div>
+    <hr />
+
+    @Ajax.ActionLink(
+    "Texte avant appel Ajax avec Razor",
+    "AjaxVue",
+    new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "GET",
+        UpdateTargetId = "divMessage3"
+    });
+
+</body>
+</html>
+
