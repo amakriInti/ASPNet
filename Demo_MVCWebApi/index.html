@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Client</title>
+    <script src="/Scripts/jquery-3.4.1.min.js"></script> 
+</head>
+<body>
+    <h2>Client RestFull</h2>
+    <div>
+        <select id="ville">
+            <option>Agen</option>
+            <option>Bern</option>
+            <option>Tout</option>
+        </select>
+        <a id="listePersonne" href="#">Liste des personnes</a>
+        <div id="div1"></div>
+    </div>
+    <hr />
+
+    <h4>Nouvelle personne</h4>
+    <div>
+        <input type="text" id="newNom" placeholder="tapez votre nom" />
+        <input type="text" id="newVille" placeholder="tapez votre ville" />
+        <a id="savePersonne" href="#">Enregistrer</a>
+        <div id="div2"></div>
+    </div>
+    <hr />
+
+    <h4>Modif personne</h4>
+    <div>
+        <input type="text" id="modifId" placeholder="tapez votre id" />
+        <input type="text" id="modifNom" placeholder="tapez votre nom" />
+        <input type="text" id="modifVille" placeholder="tapez votre ville" />
+        <a id="modifPersonne" href="#">Modifier</a>
+        <div id="div3"></div>
+    </div>
+    <hr />
+
+    <h4>Suppression personne</h4>
+    <div>
+        <input type="text" id="suprId" placeholder="tapez votre id" />
+        <a id="suprPersonne" href="#">Supprimer</a>
+        <div id="div4"></div>
+    </div>
+    <hr />
+
+
+    <script>
+        $('#listePersonne').click(function () {
+            var ville = $('#ville').val();
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:65160//api/personne/values/" + ville,
+                datatype: 'application/json',
+                contentType: 'application/json',
+                //contentType: 'application/x-www-form-urlencoded',
+                //headers: {
+                //    'Access-Control-Allow-Origin': '*'
+                //},
+                success: function (data, status) {
+                    if (status == "success") {
+
+                        fragment = "<table>";
+                        for (var p in data) {
+                            fragment += "<tr><td>" + data[p].Id + "</td><td>" + data[p].Nom + "</td><td>" + data[p].Ville + "</td></tr>";
+                        }
+                        fragment += "</table>"
+                        $('#div1').html(fragment);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    $('#div1').html("Erreur");
+                }
+            });
+        })
+
+        $('#savePersonne').click(function () {
+            var nom = $('#newNom').val();
+            var ville = $('#newVille').val();
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:65160/api/personne/values/?nom=" + nom + "&ville=" + ville,
+                //datatype: 'application/json',
+                //contentType: 'application/json',
+                //contentType: 'application/x-www-form-urlencoded',
+                //headers: {
+                //    'Access-Control-Allow-Origin': '*'
+                //},
+                success: function (data, status) {
+                    if (status == "success") {
+                        $('#div2').html(data);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    $('#div2').html("Erreur");
+                }
+            });
+        })
+
+        $('#modifPersonne').click(function () {
+            var id = $('#modifId').val();
+            var nom = $('#modifNom').val();
+            var ville = $('#modifVille').val();
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:65160/api/personne/values/?id=" + id + "&nom=" + nom + "&ville=" + ville,
+                //datatype: 'application/json',
+                //contentType: 'application/json',
+                //contentType: 'application/x-www-form-urlencoded',
+                //headers: {
+                //    'Access-Control-Allow-Origin': '*'
+                //},
+                success: function (data, status) {
+                    if (status == "success") {
+                        $('#div3').html(data);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    $('#div3').html("Erreur");
+                }
+            });
+        })
+
+        $('#suprPersonne').click(function () {
+            var id = $('#suprId').val();
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:65160/api/personne/values/?id=" + id,
+                success: function (data, status) {
+                    if (status == "success") {
+                        $('#div4').html(data);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    $('#div4').html("Erreur");
+                }
+            });
+        })
+
+    </script>
+</body>
+</html>

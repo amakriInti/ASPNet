@@ -1,3 +1,4 @@
+using Demo_MVCWebApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,13 @@ namespace Demo_MVCWebApi
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            var liste = new List<Personne> {
+            new Personne{ Id=1, Nom="Alban", Ville="Agen"  },
+            new Personne{ Id=2, Nom="Baltazar", Ville="Bern"  },
+            new Personne{ Id=3, Nom="Carmen", Ville="Agen"  }
+            };
+            Application["Personne"] = liste;
         }
     }
 }

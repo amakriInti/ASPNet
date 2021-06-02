@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Client</title>
+    <script src="/Scripts/jquery-3.6.0.min.js"></script> 
+</head>
+<body>
+    <h2>Client RestFull</h2>
+    <a id ="listePersonne" href="#">Liste des personnes</a>
+    <div id="div1"></div>
+    <script>
+        $('#listePersonne').click(function () {
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:65160//api/personne/values/tout",
+                datatype: 'application/json',
+                contentType: 'application/json',
+                //contentType: 'application/x-www-form-urlencoded',
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                },
+                success: function (data, status) {
+                    if (status == "success")
+                        $('#div1').html("Ok");
+                },
+                error: function (xhr, status, error) {
+                    $('#div1').html("Erreur");
+                }
+            });
+        })
+    </script>
+</body>
+</html>

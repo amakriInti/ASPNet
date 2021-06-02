@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web;
 
 namespace Demo_MVCWebApi.Controllers
 {
@@ -17,33 +18,47 @@ namespace Demo_MVCWebApi.Controllers
         }
 
         // GET api/values/5
-        public string Get(int id)
+        public string Get(int entier)
         {
-            return "value";
+            return "value int";
         }
-        public IEnumerable<Personne> Get(string ville)
+        public string Get(string id)
         {
-            var liste = new List<Personne> {
-            new Personne{ Id=1, Nom="Alban", Ville="Agen"  },
-            new Personne{ Id=2, Nom="Baltazar", Ville="Berne"  },
-            new Personne{ Id=3, Nom="Carmen", Ville="Agen"  }
-            };
+            return "value string";
+        }
+        public IEnumerable<Personne> GetPersonne(string ville)
+        {
+            var liste = (List<Personne>)HttpContext.Current.Application["Personne"];
+            if (ville.ToUpper() == "TOUT") return liste;
             return liste.Where(p => ville == null || p.Ville == ville);
         }
 
-        // POST api/values
-        public void Post([FromBody] string value)
+        // Insertion
+        public string Post(string nom, string ville)
         {
-        }
+            var liste = (List<Personne>)System.Web.HttpContext.Current.Application["Personne"];
 
-        // PUT api/values/5
-        public void Put(int id, [FromBody] string value)
-        {
+            var id = liste.Select(p => p.Id).Max() + 1;
+            liste.Add(new Personne { Id = id, Nom = nom, Ville = ville });
+            return "Ok";
         }
-
-        // DELETE api/values/5
-        public void Delete(int id)
+        // Modif
+        public string Post(int id, string nom, string ville)
         {
+            var liste = (List<Personne>)System.Web.HttpContext.Current.Application["Personne"];
+            var p = liste.FirstOrDefault(x => x.Id == id);
+            if (p == null) return null;
+            p.Nom = nom;
+            p.Ville = ville;
+            return "Ok";
+        }
+        public string PostAutre(int id)
+        {
+            var liste = (List<Personne>)System.Web.HttpContext.Current.Application["Personne"];
+            var p = liste.FirstOrDefault(x => x.Id == id);
+            if (p == null) return null;
+            liste.Remove(p);
+            return "Ok";
         }
     }
 }
