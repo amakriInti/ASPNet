@@ -8,7 +8,6 @@ namespace Exo1.Pave.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
         public ActionResult Index()
         {
             return View();
@@ -16,13 +15,18 @@ namespace Exo1.Pave.Controllers
         [HttpPost]
         public ActionResult Index(string code)
         {
-            if (code == "1234") return RedirectToAction("Accueil");
+            if (code == "1234")
+            {
+                Session["Passe"] = true;
+                return RedirectToAction("Accueil");
+            }
             if (code != null) ViewBag.Erreur = "Code incorrect";
             return View();
         }
 
         public ActionResult Accueil()
         {
+            if (Session["Passe"] == null) return RedirectToAction("Index");
             return View();
         }
 
@@ -39,10 +43,12 @@ namespace Exo1.Pave.Controllers
         }
         public ActionResult Album()
         {
+            if (Session["Passe"] == null) return RedirectToAction("Index");
             return View();
         }
         public ActionResult Photos(string id)
         {
+            if (Session["Passe"] == null) return RedirectToAction("Index");
             return View();
         }
 
