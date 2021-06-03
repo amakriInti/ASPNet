@@ -71,6 +71,7 @@
                         }
                         fragment += "</table>"
                         $('#div1').html(fragment);
+                        $('.detail').click(function () { alert('detail'); });
                     }
                 },
                 error: function (xhr, status, error) {
@@ -142,7 +143,7 @@
             });
         })
 
-        $('.detail').click(function () { alert('detail');});
+       
 
     </script>
 </body>
