@@ -63,7 +63,11 @@
 
                         fragment = "<table>";
                         for (var p in data) {
-                            fragment += "<tr><td>" + data[p].Id + "</td><td>" + data[p].Nom + "</td><td>" + data[p].Ville + "</td></tr>";
+                            fragment += "<tr><td>" +
+                                data[p].Id + "</td><td>" +
+                                data[p].Nom + "</td><td>" +
+                                data[p].Ville + "</td><td>" +
+                                "<a href='#' class='detail' id='detail_" + data[p].Id + "'>Détail</a>" + "</td></tr >";
                         }
                         fragment += "</table>"
                         $('#div1').html(fragment);
@@ -137,6 +141,8 @@
                 }
             });
         })
+
+        $('.detail').click(function () { alert('detail');});
 
     </script>
 </body>

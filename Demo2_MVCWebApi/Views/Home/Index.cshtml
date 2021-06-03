@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Domicile
+        </th>
+        <th>
+            Visiteur
+        </th>
+        <th>
+
+        </th>
+        <th>
+
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Equipe1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Equipe2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score2)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+@section scripts{
+    <script>
+            var ville = $('#ville').val();
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:65160//api/personne/values/" + ville,
+                datatype: 'application/json',
+                contentType: 'application/json',
+                //contentType: 'application/x-www-form-urlencoded',
+                //headers: {
+                //    'Access-Control-Allow-Origin': '*'
+                //},
+                success: function (data, status) {
+                    if (status == "success") {
+
+                        fragment = "<table>";
+                        for (var p in data) {
+                            fragment += "<tr><td>" +
+                                data[p].Id + "</td><td>" +
+                                data[p].Nom + "</td><td>" +
+                                data[p].Ville + "</td><td>" +
+                                "<a href='#' class='detail' id='detail_" + data[p].Id + "'>Détail</a>" + "</td></tr >";
+                        }
+                        fragment += "</table>"
+                        $('#div1').html(fragment);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    $('#div1').html("Erreur");
+                }
+        })
+    </script>
+}
